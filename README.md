@@ -1,4 +1,4 @@
-# Name
+# Spring JMS Getting Started with Active MQ
 
 Overview
 
