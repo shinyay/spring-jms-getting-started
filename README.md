@@ -6,6 +6,7 @@ Overview
 ### Dependency
 - spring-boot-starter-activemq
 - activemq-broker
+- jackson-databind
 
 ## Demo
 
