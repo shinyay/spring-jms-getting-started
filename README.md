@@ -1,6 +1,6 @@
 # Spring JMS Getting Started with Active MQ
 
-Overview
+JMS Application with Active MQ
 
 ## Description
 ### Dependency
