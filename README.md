@@ -4,7 +4,8 @@ Overview
 
 ## Description
 ### Dependency
-- org.apache.activemq:activemq-broker
+- spring-boot-starter-activemq
+- activemq-broker
 
 ## Demo
 
