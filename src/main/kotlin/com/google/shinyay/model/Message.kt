@@ -1,4 +1,4 @@
 package com.google.shinyay.model
 
-class Message {
-}
+data class Message(val to: String,
+                   val body: String)
