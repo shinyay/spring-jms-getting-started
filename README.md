@@ -11,7 +11,9 @@ JMS Application with Active MQ
 ### JMSListener
 `@JmsListener` defines;
 - Destination
+  - This method should listen to
 - JmsListenerContainerFactory
+  - The reference to use to create the underlying message listener container
 
 ## Demo
 
