@@ -8,6 +8,11 @@ JMS Application with Active MQ
 - activemq-broker
 - jackson-databind
 
+### JMSListener
+`@JmsListener` defines;
+- Destination
+- JmsListenerContainerFactory
+
 ## Demo
 
 ## Features
