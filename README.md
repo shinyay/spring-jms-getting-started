@@ -13,7 +13,12 @@ JMS Application with Active MQ
 - Destination
   - This method should listen to
 - JmsListenerContainerFactory
-  - The reference to use to create the underlying message listener container
+  - The reference to create the underlying message listener container
+
+```kotlin
+@JmsListener(destination = "messagebox", containerFactory = "myFactory")
+fun receiveMessage(message: Message)
+```
 
 ## Demo
 
