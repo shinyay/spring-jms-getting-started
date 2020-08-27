@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
 	val context =
 			runApplication<SpringJmsGettingStartedApplication>(*args)
 	val jmsTemplate = context.getBean(JmsTemplate::class.java)
-	jmsTemplate.convertAndSend("message", Message("Hello", "Hello JMS"))
+	jmsTemplate.convertAndSend("messagebox", Message("Hello", "Hello JMS"))
 }
 val Any.logger: Logger
 	get() = LoggerFactory.getLogger(this.javaClass)
