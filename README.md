@@ -20,6 +20,14 @@ JMS Application with Active MQ
 fun receiveMessage(message: Message)
 ```
 
+### EnableJms
+Discovering the methods annotated with `@JmsListener` and create the message listener container.
+
+```kotlin
+@SpringBootApplication
+@EnableJms
+class SpringJmsGettingStartedApplication
+```
 ## Demo
 
 ## Features
