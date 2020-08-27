@@ -27,12 +27,12 @@ class SpringJmsGettingStartedApplication {
 		return factory
 	}
 
-	@Bean
+	@Bean // Serialize message content to json using TextMessage
 	fun jacksonJmsMessageConverter(): MessageConverter? {
-		return MappingJackson2MessageConverter().apply {
-			setTargetType(MessageType.TEXT)
-			setTypeIdPropertyName("_type")
-		}
+		val converter = MappingJackson2MessageConverter()
+		converter.setTargetType(MessageType.TEXT)
+		converter.setTypeIdPropertyName("_type")
+		return converter
 	}
 }
 
