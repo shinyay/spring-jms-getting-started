@@ -28,6 +28,15 @@ Discovering the methods annotated with `@JmsListener` and create the message lis
 @EnableJms
 class SpringJmsGettingStartedApplication
 ```
+
+### DefaultJmsListenerContainerFactory
+DefaultJmsListenerContainerFactoryConfigurer infrastructure provided by Spring Boot, that JmsMessageListenerContainer will be identical to the one that boot creates by default.
+
+```kotlin
+@Bean
+fun myFactory(@Qualifier("jmsConnectionFactory") connectionFactory: ConnectionFactory,
+              configurer: DefaultJmsListenerContainerFactoryConfigurer)
+```
 ## Demo
 
 ## Features
