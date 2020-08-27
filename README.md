@@ -37,6 +37,14 @@ DefaultJmsListenerContainerFactoryConfigurer infrastructure provided by Spring B
 fun myFactory(@Qualifier("jmsConnectionFactory") connectionFactory: ConnectionFactory,
               configurer: DefaultJmsListenerContainerFactoryConfigurer)
 ```
+
+### JMS Tempalte
+`JmsTemplate` makes it very simple to send messages to a JMS destination. 
+
+```kotlin
+val jmsTemplate = context.getBean(JmsTemplate::class.java)
+	jmsTemplate.convertAndSend("destinationName", "message")
+```
 ## Demo
 
 ## Features
