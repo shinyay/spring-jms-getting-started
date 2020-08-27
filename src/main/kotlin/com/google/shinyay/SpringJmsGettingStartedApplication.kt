@@ -3,6 +3,7 @@ package com.google.shinyay
 import com.google.shinyay.model.Message
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer
 import org.springframework.boot.runApplication
@@ -17,29 +18,29 @@ import javax.jms.ConnectionFactory
 
 @SpringBootApplication
 @EnableJms
-class SpringJmsGettingStartedApplication
+class SpringJmsGettingStartedApplication {
+	@Bean
+	fun myFactory(@Qualifier("jmsConnectionFactory") connectionFactory: ConnectionFactory,
+				  configurer: DefaultJmsListenerContainerFactoryConfigurer): DefaultJmsListenerContainerFactory {
+		val factory = DefaultJmsListenerContainerFactory()
+		configurer.configure(factory, connectionFactory)
+		return factory
+	}
+
+	@Bean
+	fun jacksonJmsMessageConverter(): MessageConverter? {
+		return MappingJackson2MessageConverter().apply {
+			setTargetType(MessageType.TEXT)
+			setTypeIdPropertyName("_type")
+		}
+	}
+}
 
 fun main(args: Array<String>) {
 	val context =
 			runApplication<SpringJmsGettingStartedApplication>(*args)
 	val jmsTemplate = context.getBean(JmsTemplate::class.java)
 	jmsTemplate.convertAndSend("messagebox", Message("Hello", "Hello JMS"))
-}
-
-@Bean
-fun myFactory(connectionFactory: ConnectionFactory,
-			  configurer: DefaultJmsListenerContainerFactoryConfigurer): DefaultJmsListenerContainerFactory {
-	val factory = DefaultJmsListenerContainerFactory()
-	configurer.configure(factory, connectionFactory)
-	return factory
-}
-
-@Bean
-fun jacksonJmsMessageConverter(): MessageConverter? {
-	return MappingJackson2MessageConverter().apply {
-		setTargetType(MessageType.TEXT)
-		setTypeIdPropertyName("_type")
-	}
 }
 
 val Any.logger: Logger
